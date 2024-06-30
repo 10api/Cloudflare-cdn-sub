@@ -5,8 +5,7 @@ let mytoken= ['auto'];//快速订阅访问入口, 留空则不启动快速订阅
 
 // 设置优选地址，不带端口号默认443，TLS订阅生成
 let addresses = [
-	'icook.tw:2053#官方优选域名',
-	'cloudflare.cfgo.cc#优选官方线路',
+	'', //内置优选域名
 ];
 
 // 设置优选地址api接口
@@ -17,9 +16,7 @@ let addressesapi = [
 
 // 设置优选地址，不带端口号默认80，noTLS订阅生成
 let addressesnotls = [
-	'www.visa.com.sg#官方优选域名',
-	'www.wto.org:8080#官方优选域名',
-	'www.who.int:8880#官方优选域名',
+	'', //内置优选域名
 ];
 
 // 设置优选noTLS地址api接口
@@ -54,11 +51,11 @@ let proxyhosts = [//本地代理域名池
 let proxyhostsURL = 'https://raw.githubusercontent.com/cmliu/CFcdnVmess2sub/main/proxyhosts';//在线代理域名池URL
 let EndPS = '';//节点名备注内容
 let 协议类型 = 'VLESS';
-let FileName = 'WorkerVless2sub';
+let FileName = 'Cloudflare-cdn-sub';
 let SUBUpdateTime = 6; 
-let total = 99;//PB
+let total = 100;//PB
 //let timestamp = now;
-let timestamp = 4102329600000;//2099-12-31
+let timestamp = 4102329600000;//3000-01-01
 const regex = /^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|\[.*\]):?(\d+)?#?(.*)?$/;
 // 虚假uuid和hostname，用于发送给配置生成服务
 let fakeUserID ;
@@ -400,7 +397,7 @@ export default {
 			
 			
 				
-				https://github.com/cmliu/WorkerVless2sub
+				Cloudflare cdn 全球加速服务 请遵循当地法律 禁止非法用途
 				`;
 			
 				return new Response(responseText, {
@@ -634,7 +631,7 @@ export default {
 				if(proxyhosts && (host.includes('.workers.dev') || host.includes('pages.dev'))) {
 					最终路径 = `/${host}${path}`;
 					伪装域名 = proxyhosts[Math.floor(Math.random() * proxyhosts.length)];
-					节点备注 = `${EndPS} 已启用临时域名中转服务，请尽快绑定自定义域！`;
+					节点备注 = `${EndPS} 已启用中转服务`;
 					sni = 伪装域名;
 				}
 
